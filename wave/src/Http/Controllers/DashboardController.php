@@ -23,6 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        echo json_encode(auth()->user());
         return view('theme::dashboard.index');
     }
 }

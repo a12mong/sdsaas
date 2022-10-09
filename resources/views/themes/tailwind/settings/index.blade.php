@@ -90,20 +90,14 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.js"></script>
 	<script>
 
-			let uploadCropEl = document.getElementById('upload-crop');
-			let uploadLoading = document.getElementById('uploadLoading');
-			let fileTypes = ['jpg', 'jpeg', 'png'];
+			var uploadCropEl = document.getElementById('upload-crop');
+			var uploadLoading = document.getElementById('uploadLoading');
 
 			function readFile() {
 				input = document.getElementById('upload');
 				if (input.files && input.files[0]) {
-					let reader = new FileReader();
+					var reader = new FileReader();
 
-					let fileType = input.files[0].name.split('.').pop().toLowerCase();
-					if (fileTypes.indexOf(fileType) < 0) {
-						alert('Invalid file type. Please select a JPG or PNG file.');
-						return false;
-					}
 					reader.onload = function (e) {
 						//$('.upload-demo').addClass('ready');
 						uploadCrop.bind({
@@ -113,6 +107,7 @@
 							//uploadCrop.setZoom(0);
 						});
 					}
+
 					reader.readAsDataURL(input.files[0]);
 				}
 				else {
@@ -148,11 +143,6 @@
 			}
 
 			function applyImageCrop(){
-				let fileType = input.files[0].name.split('.').pop().toLowerCase();
-				if (fileTypes.indexOf(fileType) < 0) {
-					alert('Invalid file type. Please select a JPG or PNG file.');
-					return false;
-				}
 				uploadCrop.result({type:'base64',size:'original',format:'png',quality:1}).then(function(base64) {
 					document.getElementById('preview').src = base64;
 					document.getElementById('uploadBase64').value = base64;

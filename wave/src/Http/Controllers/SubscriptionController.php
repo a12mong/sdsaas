@@ -146,7 +146,7 @@ class SubscriptionController extends Controller
                     $status = 1;
                 } else {
 
-                    $message = 'Error locating that subscription product id. Please contact us if you think this is incorrect.';
+                    $message = $resBody;//'['.$order->is_subscription.'] Error locating that subscription product id ['.$order->product_id.']. Please contact us if you think this is incorrect.';
 
                 }
             } else {

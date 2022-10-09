@@ -25,11 +25,7 @@ class SettingsController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'sometimes|required|email|unique:users,email,' . Auth::user()->id,
-            'username' => 'sometimes|required|unique:users,username,' . Auth::user()->id,
-            'avatar' => 'base64image'
-        ],
-        [
-            'avatar.base64image' => 'The avatar must be a valid image.'
+            'username' => 'sometimes|required|unique:users,username,' . Auth::user()->id
         ]);
 
     	$authed_user = auth()->user();
